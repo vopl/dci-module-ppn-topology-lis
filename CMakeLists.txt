@@ -42,7 +42,7 @@ dciTest(${UNAME} noenv
     SRC
         ${TST}
     LINK
-        host
+        host-lib
         crypto
         exception
         utils

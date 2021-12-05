@@ -67,7 +67,7 @@ namespace dci::module::ppn::topology::lis
             bool operator()(const space::Id& a, const space::Id& b) const
             {
                 constexpr uint32 size = space::Id{}.size();
-                for(uint idx{size-1}; idx < size; --idx)
+                for(uint32 idx{size-1}; idx < size; --idx)
                 {
                     if(a[idx] == b[idx])
                     {

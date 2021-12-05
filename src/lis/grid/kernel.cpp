@@ -7,6 +7,7 @@
 
 #include "pch.hpp"
 #include "kernel.hpp"
+#include <climits>
 
 namespace dci::module::ppn::topology::lis::grid
 {
@@ -127,10 +128,27 @@ namespace dci::module::ppn::topology::lis::grid
             return {};
         }
 
-        real64 dist01 = std::pow(_stepMult, idx);
-        real64 dist64 = dist01 * 0x1p64;
+        constexpr real64 norma = []
+        {
+            real64 res = 1;
+            for(std::size_t r{}; r<sizeof(space::SmallNum)*CHAR_BIT; ++r)
+                res *= 2;
+            return res;
+        }();
+        constexpr real64 max = static_cast<real64>(~space::SmallNum{});
 
-        space::SmallNum res = static_cast<space::SmallNum>(dist64 + 0.5);
+        real64 dist01 = std::pow(_stepMult, idx);
+        real64 dist64 = dist01 * norma + 0.5;
+
+        space::SmallNum res;
+        if(max <= dist64)
+        {
+            res = ~space::SmallNum{};
+        }
+        else
+        {
+            res = static_cast<space::SmallNum>(dist64);
+        }
 
         if(res < static_cast<space::SmallNum>(dist64/2))
         {
