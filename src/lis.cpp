@@ -168,7 +168,7 @@ namespace dci::module::ppn::topology
 
                 setIntensity(std::atof(c.get("intensity", "0.1").data()));
 
-                return cmt::readyFuture<>();
+                return cmt::readyFuture(None{});
             };
         }
     }
