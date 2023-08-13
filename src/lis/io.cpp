@@ -214,7 +214,7 @@ namespace dci::module::ppn::topology::lis
     {
         for(transport::Address& a : as)
         {
-            if(utils::net::url::isCover(remoteAddr.value, a.value))
+            if(utils::uri::isCover(remoteAddr.value, a.value))
             {
                 _lis->supplied(remoteId, std::move(a));
             }

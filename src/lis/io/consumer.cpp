@@ -190,7 +190,7 @@ namespace dci::module::ppn::topology::lis::io
         List<transport::Address> filtered;
         for(const transport::Address& a : as)
         {
-            if(!utils::net::url::isCover(_address.value, a.value))
+            if(!utils::uri::isCover(_address.value, a.value))
             {
                 continue;
             }

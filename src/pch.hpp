@@ -13,7 +13,7 @@
 #include <dci/utils/b2h.hpp>
 #include <dci/utils/h2b.hpp>
 #include <dci/utils/endian.hpp>
-#include <dci/utils/net/url.hpp>
+#include <dci/utils/uri.hpp>
 #include <dci/poll/timer.hpp>
 #include <dci/stiac.hpp>
 #include <dci/config.hpp>
